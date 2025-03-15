@@ -153,9 +153,9 @@
             <textarea id="shareable-link" rows="3" readonly></textarea>
         </div>
     </div>
-
-    <script>
-        document.getElementById('send-gift').addEventListener('click', async () => {
+    
+            <script>
+            document.getElementById('send-gift').addEventListener('click', async () => {
             const recipientName = document.getElementById('recipient-name').value.trim();
             const message = document.getElementById('message').value.trim();
             const imageFile = document.getElementById('image').files[0];
@@ -184,7 +184,7 @@
             };
 
             // Create a shareable link with the gift data as a parameter
-            const baseUrl = https://edycindy.github.io/gift/('?')[0];
+            const baseUrl = 'https://edycindy.github.io/gift/'; // Make sure this is correct!
             const shareableLink = `${baseUrl}?giftData=${encodeURIComponent(JSON.stringify(giftData))}`;
 
             const shareableLinkTextarea = document.getElementById('shareable-link');
