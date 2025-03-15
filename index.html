@@ -210,6 +210,10 @@
 
 <body>
     <div class="gift-card" id="gift-details">
+        <!-- Label di sudut kanan atas -->
+        <div class="top-right-label">
+            <i class="fas fa-gift"></i> HADIAH
+        </div>
         <div class="gift-header">
             <h1>Hadiah Spesial!</h1>
             <div class="gift-image-container">
@@ -219,8 +223,16 @@
         <div class="gift-body">
             <p class="gift-message" id="gift-message"></p>
             <p class="gift-music"><i class="fas fa-music"></i>Musik: <span id="gift-music"></span></p>
-            <p>Untuk: <span id="gift-recipient"></span></p>
+            <p>Buat <span id="gift-recipient"></span></p>
             <audio controls id="gift-audio"></audio>
+            
+        <div class="share-buttons">
+               
+                <a href="#" onclick="shareGift()">
+                    <i class="fas fa-share-alt"></i> Bagikan Lainnya
+                </a>
+            </div>
+
         </div>
     </div>
 
@@ -262,7 +274,22 @@
                 document.getElementById('gift-details').innerHTML = '<p>Tidak ada data hadiah ditemukan.</p>';
             }
         });
+
+        function shareGift() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Hadiah Spesial untukmu!',
+                    text: 'Lihat hadiah yang telah disiapkan untukmu.',
+                    url: window.location.href,
+                })
+                    .then(() => console.log('Berhasil dibagikan'))
+                    .catch((error) => console.log('Error berbagi:', error));
+            } else {
+                alert('Fitur berbagi tidak didukung di browser ini.');
+            }
+        }
     </script>
 </body>
 
+</html>
 </html>
