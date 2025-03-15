@@ -15,17 +15,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-       
-         <!--====== Favicon Icon ======-->
+
+    <!--====== Favicon Icon ======-->
     <link rel="apple-touch-icon" sizes="180x180" href="hadia.png">
     <link rel="icon" type="image/png" sizes="32x32" href="hadia.png">
     <link rel="icon" type="image/png" sizes="16x16" href="hadia.png">
-    <link rel="manifest" href="webmanifest">    
-    
+    <link rel="manifest" href="webmanifest">
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Menu Pilihan">
     <meta property="og:description" content="All in One">
-    <meta property="og:image" content="hadia.png"> <!-- Ganti dengan URL gambar yang diinginkan -->
+    <meta property="og:image" content="hadia.png">
+    <!-- Ganti dengan URL gambar yang diinginkan -->
     <meta property="og:url" content="https://edycindy.github.io/Menu/gift/">
     <meta property="og:type" content="website">
 
@@ -33,7 +34,8 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Menu Pilihan">
     <meta name="twitter:description" content="All in One">
-    <meta name="twitter:image" content="hadia.png"> <!-- Ganti dengan URL gambar yang diinginkan -->
+    <meta name="twitter:image" content="hadia.png">
+    <!-- Ganti dengan URL gambar yang diinginkan -->
     <meta name="twitter:url" content="https://edycindy.github.io/Menu/gift/">
     <style>
         body {
@@ -48,6 +50,7 @@
             padding: 20px;
             text-align: center;
             text-shadow: #333;
+            overflow: hidden; /* Prevent scrollbars due to falling elements */
         }
 
         .gift-card {
@@ -58,7 +61,7 @@
             max-width: 600px;
             overflow: hidden;
             position: relative;
-            
+
             /* Animasi Neon */
             animation: neon-glow 3s ease-in-out infinite alternate;
         }
@@ -155,7 +158,8 @@
 
         .share-buttons a {
             display: inline-block;
-            background-color: #3b5998; /* Facebook Blue */
+            background-color: #3b5998;
+            /* Facebook Blue */
             color: white;
             padding: 10px 20px;
             border-radius: 5px;
@@ -173,17 +177,35 @@
             position: absolute;
             top: 10px;
             right: 10px;
-            background-color: #f00; /* Warna latar belakang label */
-            color: white; /* Warna teks label */
+            background-color: #f00;
+            /* Warna latar belakang label */
+            color: white;
+            /* Warna teks label */
             padding: 5px 10px;
             border-radius: 5px;
             font-size: 14px;
-            z-index: 10; /* Pastikan label berada di atas elemen lain */
+            z-index: 10;
+            /* Pastikan label berada di atas elemen lain */
         }
 
         /* Ikon di dalam label */
         .top-right-label i {
             margin-right: 5px;
+        }
+
+        /* Style untuk elemen yang berjatuhan */
+        .falling-element {
+            position: fixed;
+            top: -100px; /* Mulai di atas layar */
+            z-index: 1; /* Pastikan di belakang konten hadiah */
+            pointer-events: none; /* Biarkan klik menembus */
+            animation: falling linear infinite;
+        }
+
+        @keyframes falling {
+            to {
+                transform: translateY(110vh); /* Jatuh hingga di bawah layar */
+            }
         }
 
         /* Media Queries for Responsiveness */
@@ -209,6 +231,9 @@
 </head>
 
 <body>
+    <!-- Container untuk elemen yang berjatuhan -->
+    <div class="falling-elements-container"></div>
+
     <div class="gift-card" id="gift-details">
         <!-- Label di sudut kanan atas -->
         <div class="top-right-label">
@@ -221,13 +246,13 @@
             </div>
         </div>
         <div class="gift-body">
+            <p>Buat <span id="gift-recipient"></span></p>
             <p class="gift-message" id="gift-message"></p>
             <p class="gift-music"><i class="fas fa-music"></i>Musik: <span id="gift-music"></span></p>
-            <p>Buat <span id="gift-recipient"></span></p>
             <audio controls id="gift-audio"></audio>
-            
-        <div class="share-buttons">
-               
+
+            <div class="share-buttons">
+
                 <a href="#" onclick="shareGift()">
                     <i class="fas fa-share-alt"></i> Bagikan Lainnya
                 </a>
@@ -239,41 +264,48 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
-            const giftDataParam = urlParams.get('giftData');
+            const giftId = urlParams.get('id');
 
-            if (giftDataParam) {
-                try {
-                    const gift = JSON.parse(decodeURIComponent(giftDataParam));
+            if (giftId) {
+                const giftData = localStorage.getItem(giftId);
+
+                if (giftData) {
+                    const gift = JSON.parse(giftData);
 
                     document.getElementById('gift-recipient').innerText = gift.recipientName;
                     document.getElementById('gift-message').innerText = gift.message || "Tidak ada pesan.";
 
                     const imageElement = document.getElementById('gift-image');
-                    if (gift.imageUrl) {
-                        imageElement.src = gift.imageUrl;
-                    } else {
-                        imageElement.style.display = 'none'; // Hide if no image
-                    }
+                    imageElement.src = gift.image; // Set the src attribute
 
+                    // Display the music file name
                     const musicElement = document.getElementById('gift-music');
-                    const audioElement = document.getElementById('gift-audio');
+                    musicElement.innerText = gift.musicFile || "Tidak ada musik dipilih";
 
-                    if (gift.musicUrl) {
-                        musicElement.innerText = "Musik tersedia";
-                        audioElement.src = gift.musicUrl;
+                    // Audio playback simulation
+                    const audioElement = document.getElementById('gift-audio');
+                    if (gift.musicFile) {
+                        // You would need to load the actual audio file here.
+                        // In a real scenario, you'd have a URL to the music file.
+                        audioElement.src = gift.musicFile; // Assign the simulated music file path
                         audioElement.controls = true;
                     } else {
-                        musicElement.innerText = "Tidak ada musik dipilih";
-                        audioElement.style.display = 'none';
+                        audioElement.style.display = 'none'; // Hide the audio element if no music
                     }
-                } catch (error) {
-                    console.error("Error parsing gift data:", error);
-                    document.getElementById('gift-details').innerHTML = '<p>Data hadiah tidak valid.</p>';
+
+                } else {
+                    document.getElementById('gift-details').innerHTML = '<p>Hadiah tidak ditemukan.</p>';
                 }
             } else {
-                document.getElementById('gift-details').innerHTML = '<p>Tidak ada data hadiah ditemukan.</p>';
+                document.getElementById('gift-details').innerHTML = '<p>ID hadiah tidak valid.</p>';
             }
         });
+
+        function shareOnFacebook() {
+            const giftUrl = window.location.href; // URL of the gift page
+            const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(giftUrl)}`;
+            window.open(facebookShareUrl, '_blank');
+        }
 
         function shareGift() {
             if (navigator.share) {
@@ -288,8 +320,35 @@
                 alert('Fitur berbagi tidak didukung di browser ini.');
             }
         }
+
+        // JavaScript untuk membuat efek love/bunga berjatuhan
+        const fallingElementsContainer = document.querySelector('.falling-elements-container');
+        const numberOfElements = 20; // Jumlah elemen yang berjatuhan
+        const elements = ['❤️', '🌸', '🌷', '🌹', '🌼', '💖']; // Daftar elemen
+
+        function createFallingElement() {
+            const element = document.createElement('span');
+            element.classList.add('falling-element');
+            element.innerText = elements[Math.floor(Math.random() * elements.length)]; // Pilih elemen secara acak
+
+            // Ukuran elemen secara acak
+            const size = Math.random() * 20 + 15;
+            element.style.fontSize = `${size}px`;
+
+            // Posisi horizontal secara acak
+            element.style.left = `${Math.random() * 100}vw`;
+
+            // Durasi animasi secara acak
+            element.style.animationDuration = `${Math.random() * 5 + 5}s`;
+
+            fallingElementsContainer.appendChild(element);
+        }
+
+        // Buat elemen yang berjatuhan
+        for (let i = 0; i < numberOfElements; i++) {
+            createFallingElement();
+        }
     </script>
 </body>
 
-</html>
 </html>
