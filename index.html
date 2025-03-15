@@ -38,7 +38,7 @@
     <!-- Ganti dengan URL gambar yang diinginkan -->
     <meta name="twitter:url" content="https://edycindy.github.io/Menu/gift/create/">
     <style>
-        body {
+       body {
             font-family: 'Poppins', sans-serif;
             background: #f7f8fc;
             color: #333;
@@ -50,8 +50,6 @@
             padding: 20px;
             text-align: center;
             text-shadow: #333;
-            overflow: hidden;
-            /* Prevent scrollbars due to falling elements */
         }
 
         .gift-card {
@@ -62,7 +60,7 @@
             max-width: 600px;
             overflow: hidden;
             position: relative;
-
+            
             /* Animasi Neon */
             animation: neon-glow 3s ease-in-out infinite alternate;
         }
@@ -159,8 +157,7 @@
 
         .share-buttons a {
             display: inline-block;
-            background-color: #3b5998;
-            /* Facebook Blue */
+            background-color: #3b5998; /* Facebook Blue */
             color: white;
             padding: 10px 20px;
             border-radius: 5px;
@@ -178,22 +175,19 @@
             position: absolute;
             top: 10px;
             right: 10px;
-            background-color: #f00;
-            /* Warna latar belakang label */
-            color: white;
-            /* Warna teks label */
+            background-color: #f00; /* Warna latar belakang label */
+            color: white; /* Warna teks label */
             padding: 5px 10px;
             border-radius: 5px;
             font-size: 14px;
-            z-index: 10;
-            /* Pastikan label berada di atas elemen lain */
+            z-index: 10; /* Pastikan label berada di atas elemen lain */
         }
 
         /* Ikon di dalam label */
         .top-right-label i {
             margin-right: 5px;
         }
-
+        
         /* Style untuk elemen yang berjatuhan */
         .falling-element {
             position: fixed;
@@ -213,6 +207,25 @@
             }
         }
 
+        /* Media Queries for Responsiveness */
+        @media (max-width: 450px) {
+            .gift-header {
+                padding: 20px;
+            }
+
+            .gift-header h1 {
+                font-size: 24px;
+            }
+
+            .gift-image-container {
+                width: 120px;
+                height: 120px;
+            }
+
+            .gift-message {
+                font-size: 15px;
+            }
+        }
         /* Media Queries for Responsiveness */
         @media (max-width: 600px) {
             .gift-header {
