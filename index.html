@@ -36,7 +36,7 @@
             margin: 0;
             padding: 20px;
             text-align: center;
-            
+            /* overflow: hidden; Hapus ini */
         }
 
         .gift-card {
@@ -47,7 +47,7 @@
             max-width: 800px;
             overflow: hidden;
             position: relative;
-            z-index: 2; /* Pastikan kartu di atas elemen berjatuhan */
+            z-index: 2;
         }
 
         .gift-header {
@@ -165,19 +165,19 @@
 
         /* Style untuk elemen yang berjatuhan */
         .falling-elements-container {
-            position: fixed;
+            position: absolute; /* Ubah ke absolute */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1; /* Pastikan di belakang konten hadiah */
+            z-index: 1;
         }
 
         .falling-element {
             position: absolute;
-            top: -100px; /* Mulai di atas layar */
-            white-space: nowrap; /* Mencegah elemen pindah baris */
+            top: -100px;
+            white-space: nowrap;
             z-index: 1;
             pointer-events: none;
             animation: falling linear infinite;
@@ -185,7 +185,7 @@
 
         @keyframes falling {
             to {
-                transform: translateY(110vh); /* Jatuh hingga di bawah layar */
+                transform: translateY(110vh);
             }
         }
 
@@ -279,30 +279,22 @@
                 document.getElementById('gift-details').innerHTML = '<p>Tidak ada data hadiah ditemukan.</p>';
             }
 
-             // JavaScript untuk membuat efek love/bunga berjatuhan
+            // JavaScript untuk membuat efek love/bunga berjatuhan
             const fallingElementsContainer = document.querySelector('.falling-elements-container');
-            const numberOfElements = 20; // Jumlah elemen yang berjatuhan
-            const elements = ['❤️', '🌸', '🌷', '🌹', '🌼', '💖']; // Daftar elemen
+            const numberOfElements = 20;
+            const elements = ['❤️', '🌸', '🌷', '🌹', '🌼', '💖'];
 
             function createFallingElement() {
                 const element = document.createElement('span');
                 element.classList.add('falling-element');
-                element.innerText = elements[Math.floor(Math.random() * elements.length)]; // Pilih elemen secara acak
-
-                // Ukuran elemen secara acak
+                element.innerText = elements[Math.floor(Math.random() * elements.length)];
                 const size = Math.random() * 20 + 15;
                 element.style.fontSize = `${size}px`;
-
-                // Posisi horizontal secara acak
                 element.style.left = `${Math.random() * 100}vw`;
-
-                // Durasi animasi secara acak
                 element.style.animationDuration = `${Math.random() * 5 + 5}s`;
-
                 fallingElementsContainer.appendChild(element);
             }
 
-            // Buat elemen yang berjatuhan
             for (let i = 0; i < numberOfElements; i++) {
                 createFallingElement();
             }
@@ -321,7 +313,6 @@
                 alert('Fitur berbagi tidak didukung di browser ini.');
             }
         }
-
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
         integrity="sha512-GsLlZN/3FkeK2CzZhtHZba0vKROHR6mHmCZPpFQHfUcFunKDUvHB5XeoYYAfEW6S5oq3YRrmlGoeDNnNtJiQeUfQ=="
