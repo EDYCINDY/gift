@@ -7,10 +7,6 @@
     <title>Lihat Hadiah</title>
     <!-- Favicon -->
     <link rel="icon" href="hadia.png" type="image/x-icon">
-    <!-- Atau, jika menggunakan PNG -->
-    <!-- <link rel="icon" href="favicon.png" type="image/png"> -->
-    <!-- Atau, jika menggunakan SVG -->
-    <!-- <link rel="icon" href="favicon.svg" type="image/svg+xml"> -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
@@ -207,6 +203,39 @@
             }
         }
 
+        /* Style untuk tombol di luar */
+        .external-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .external-buttons a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            margin: 0 10px;
+            border-radius: 50%;
+            background-color: #eee;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .external-buttons a:hover {
+            background-color: #ddd;
+        }
+
+        .external-buttons img {
+            width: 30px;
+            height: 30px;
+            margin-bottom: 5px;
+        }
+
+
         /* Media Queries for Responsiveness */
         @media (max-width: 450px) {
             .gift-header {
@@ -265,14 +294,16 @@
             <p class="gift-message" id="gift-message"></p>
             <p class="gift-music"><i class="fas fa-music"></i>Musik: <span id="gift-music"></span></p>            
             <audio controls id="gift-audio"></audio>
+        </div>
 
-            <div class="share-buttons">
-
-                <a href="#" onclick="shareGift()">
-                    <i class="fas fa-share-alt"></i> Bagikan Lainnya
-                </a>
-            </div>
-
+         <!-- Tombol di luar -->
+        <div class="external-buttons">
+            <a href="#" onclick="downloadGift()" title="Unduh Hadiah">
+                <img src="download-icon.png" alt="Unduh">
+            </a>
+            <a href="#" onclick="shareGift()" title="Bagikan Hadiah">
+                <i class="fas fa-share-alt fa-2x"></i>
+            </a>
         </div>
     </div>
 
@@ -330,6 +361,23 @@
             }
         }
 
+        function downloadGift() {
+            const giftDetails = document.getElementById('gift-details');
+            const giftRecipient = document.getElementById('gift-recipient').innerText; // Ambil nama penerima
+
+            // Konfigurasi opsi unduhan
+            const options = {
+                margin: 10,
+                filename: 'hadiah_' + giftRecipient + '.pdf', // Sertakan nama penerima dalam nama file
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Gunakan html2pdf untuk mengunduh sebagai PDF
+            html2pdf().from(giftDetails).set(options).save();
+        }
+
         // JavaScript untuk membuat efek love/bunga berjatuhan
         const fallingElementsContainer = document.querySelector('.falling-elements-container');
         const numberOfElements = 20; // Jumlah elemen yang berjatuhan
@@ -359,6 +407,7 @@
         }
 
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3FkeK2CzZhtHZba0vKROHR6mHmCZPpFQHfUcFunKDUvHB5XeoYYAfEW6S5oq3YRrmlGoeDNnNtJiQeUfQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 
 </html>
