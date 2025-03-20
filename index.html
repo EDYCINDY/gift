@@ -295,16 +295,19 @@
             <p class="gift-music"><i class="fas fa-music"></i>Musik: <span id="gift-music"></span></p>            
             <audio controls id="gift-audio"></audio>
         </div>
+    </div>
 
-         <!-- Tombol di luar -->
-        <div class="external-buttons">
-            <a href="#" onclick="downloadGift()" title="Unduh Hadiah">
-                <img src="download-icon.png" alt="Unduh">
-            </a>
-            <a href="#" onclick="shareGift()" title="Bagikan Hadiah">
-                <i class="fas fa-share-alt fa-2x"></i>
-            </a>
-        </div>
+    <!-- Tombol di luar -->
+    <div class="external-buttons">
+        <a href="#" onclick="downloadGiftAsImage()" title="Unduh sebagai Gambar">
+            <img src="download-icon.png" alt="Unduh Gambar">
+        </a>
+        <a href="#" onclick="downloadGiftAsPdf()" title="Unduh sebagai PDF">
+            <img src="download-pdf-icon.png" alt="Unduh PDF">
+        </a>
+        <a href="#" onclick="shareGift()" title="Bagikan Hadiah">
+            <i class="fas fa-share-alt fa-2x"></i>
+        </a>
     </div>
 
     <script>
@@ -361,7 +364,20 @@
             }
         }
 
-        function downloadGift() {
+        function downloadGiftAsImage() {
+            const giftDetails = document.getElementById('gift-details');
+            const giftRecipient = document.getElementById('gift-recipient').innerText;
+
+            html2canvas(giftDetails).then(canvas => {
+                const image = canvas.toDataURL('image/jpeg');
+                const link = document.createElement('a');
+                link.href = image;
+                link.download = 'hadiah_' + giftRecipient + '.jpg';
+                link.click();
+            });
+        }
+
+        function downloadGiftAsPdf() {
             const giftDetails = document.getElementById('gift-details');
             const giftRecipient = document.getElementById('gift-recipient').innerText; // Ambil nama penerima
 
@@ -408,6 +424,7 @@
 
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3FkeK2CzZhtHZba0vKROHR6mHmCZPpFQHfUcFunKDUvHB5XeoYYAfEW6S5oq3YRrmlGoeDNnNtJiQeUfQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
 </body>
 
 </html>
