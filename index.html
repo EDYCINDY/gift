@@ -34,7 +34,7 @@
     <!-- Ganti dengan URL gambar yang diinginkan -->
     <meta name="twitter:url" content="https://edycindy.github.io/Menu/gift/create/">
     <style>
-       body {
+        body {
             font-family: 'Poppins', sans-serif;
             background: #f7f8fc;
             color: #333;
@@ -45,18 +45,16 @@
             margin: 0;
             padding: 20px;
             text-align: center;
-            text-shadow: #333;
         }
 
         .gift-card {
-            background-image: url(kertas.jpg);
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            width: 100%;
-            max-width: 600px;
+            background-image: url(kertas.jpg); /* Anda bisa mengganti dengan gambar latar belakang yang lebih modern */
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Efek bayangan lebih halus */
+            width: 95%; /* Hampir fullscreen */
+            max-width: 800px;
             overflow: hidden;
             position: relative;
-            
             /* Animasi Neon */
             animation: neon-glow 3s ease-in-out infinite alternate;
         }
@@ -87,38 +85,44 @@
         .gift-header {
             background: linear-gradient(135deg, #6a11cb, #2575fc);
             color: #fff;
-            padding: 30px;
+            padding: 40px; /* Padding lebih besar */
             text-align: center;
             position: relative;
         }
 
         .gift-header h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
+            font-size: 36px; /* Ukuran font lebih besar */
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Efek bayangan teks */
         }
 
         .gift-image-container {
             position: relative;
             overflow: hidden;
-            width: 150px;
-            height: 150px;
+            width: 180px; /* Ukuran gambar lebih besar */
+            height: 180px;
             border-radius: 50%;
             margin: 0 auto;
-            border: 5px solid #fff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 6px solid #fff;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Bayangan lebih menonjol */
         }
 
         .gift-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s ease; /* Efek hover */
+        }
+
+        .gift-image:hover {
+            transform: scale(1.1);
         }
 
         .gift-body {
-            padding: 20px;
+            padding: 30px;
         }
 
-        p {
+         p {
             color: hsl(244, 96%, 49%);
             font-size: 25px;
             text-align: center;
@@ -127,18 +131,19 @@
         }
 
         .gift-message {
-            font-size: 17px;
-            line-height: 1.6;
-            margin-bottom: 20px;
+            font-size: 19px;
+            line-height: 1.7;
+            margin-bottom: 25px;
             color: hsl(300, 89%, 33%);
             font-weight: bold;
             text-shadow: #333;
+            text-align: center;
         }
 
         .gift-music {
-            font-size: 14px;
+            font-size: 15px;
             color: #777;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .gift-music i {
@@ -148,17 +153,17 @@
 
         .share-buttons {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .share-buttons a {
             display: inline-block;
-            background-color: #3b5998; /* Facebook Blue */
+            background-color: #3b5998;
             color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px 25px;
+            border-radius: 8px;
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 15px;
             transition: background-color 0.3s ease;
         }
 
@@ -169,37 +174,33 @@
         /* Label di sudut kanan atas */
         .top-right-label {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #f00; /* Warna latar belakang label */
-            color: white; /* Warna teks label */
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 14px;
-            z-index: 10; /* Pastikan label berada di atas elemen lain */
+            top: 15px;
+            right: 15px;
+            background-color: #f00;
+            color: white;
+            padding: 7px 12px;
+            border-radius: 7px;
+            font-size: 16px;
+            z-index: 10;
         }
 
         /* Ikon di dalam label */
         .top-right-label i {
-            margin-right: 5px;
+            margin-right: 7px;
         }
-        
+
         /* Style untuk elemen yang berjatuhan */
         .falling-element {
             position: fixed;
             top: -100px;
-            /* Mulai di atas layar */
             z-index: 1;
-            /* Pastikan di belakang konten hadiah */
             pointer-events: none;
-            /* Biarkan klik menembus */
             animation: falling linear infinite;
         }
 
         @keyframes falling {
             to {
                 transform: translateY(110vh);
-                /* Jatuh hingga di bawah layar */
             }
         }
 
@@ -207,7 +208,7 @@
         .external-buttons {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .external-buttons a {
@@ -215,9 +216,9 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 60px;
-            height: 60px;
-            margin: 0 10px;
+            width: 70px;
+            height: 70px;
+            margin: 0 12px;
             border-radius: 50%;
             background-color: #eee;
             color: #333;
@@ -230,48 +231,42 @@
         }
 
         .external-buttons img {
-            width: 30px;
-            height: 30px;
-            margin-bottom: 5px;
+            width: 35px;
+            height: 35px;
+            margin-bottom: 7px;
         }
 
-
-        /* Media Queries for Responsiveness */
-        @media (max-width: 450px) {
-            .gift-header {
-                padding: 20px;
-            }
-
-            .gift-header h1 {
-                font-size: 24px;
-            }
-
-            .gift-image-container {
-                width: 120px;
-                height: 120px;
-            }
-
-            .gift-message {
-                font-size: 15px;
-            }
-        }
         /* Media Queries for Responsiveness */
         @media (max-width: 600px) {
+            .gift-card {
+                width: 98%; /* Lebih mendekati fullscreen pada layar kecil */
+            }
+
             .gift-header {
-                padding: 20px;
+                padding: 30px;
             }
 
             .gift-header h1 {
-                font-size: 24px;
+                font-size: 28px;
             }
 
             .gift-image-container {
-                width: 120px;
-                height: 120px;
+                width: 150px;
+                height: 150px;
             }
 
             .gift-message {
-                font-size: 15px;
+                font-size: 17px;
+            }
+
+            .external-buttons a {
+                width: 60px;
+                height: 60px;
+            }
+
+            .external-buttons img {
+                width: 30px;
+                height: 30px;
             }
         }
     </style>
@@ -290,21 +285,15 @@
             </div>
         </div>
         <div class="gift-body">
-            <p>Buat <span id="gift-recipient"></span></p>
+            <p>Untuk <span id="gift-recipient"></span></p>
             <p class="gift-message" id="gift-message"></p>
-            <p class="gift-music"><i class="fas fa-music"></i>Musik: <span id="gift-music"></span></p>            
+            <p class="gift-music"><i class="fas fa-music"></i>Musik: <span id="gift-music"></span></p>
             <audio controls id="gift-audio"></audio>
         </div>
     </div>
 
     <!-- Tombol di luar -->
     <div class="external-buttons">
-        <a href="#" onclick="downloadGiftAsImage()" title="Unduh sebagai Gambar">
-            <img src="download-icon.png" alt="Unduh Gambar">
-        </a>
-        <a href="#" onclick="downloadGiftAsPdf()" title="Unduh sebagai PDF">
-            <img src="download-pdf-icon.png" alt="Unduh PDF">
-        </a>
         <a href="#" onclick="shareGift()" title="Bagikan Hadiah">
             <i class="fas fa-share-alt fa-2x"></i>
         </a>
@@ -364,36 +353,6 @@
             }
         }
 
-        function downloadGiftAsImage() {
-            const giftDetails = document.getElementById('gift-details');
-            const giftRecipient = document.getElementById('gift-recipient').innerText;
-
-            html2canvas(giftDetails).then(canvas => {
-                const image = canvas.toDataURL('image/jpeg');
-                const link = document.createElement('a');
-                link.href = image;
-                link.download = 'hadiah_' + giftRecipient + '.jpg';
-                link.click();
-            });
-        }
-
-        function downloadGiftAsPdf() {
-            const giftDetails = document.getElementById('gift-details');
-            const giftRecipient = document.getElementById('gift-recipient').innerText; // Ambil nama penerima
-
-            // Konfigurasi opsi unduhan
-            const options = {
-                margin: 10,
-                filename: 'hadiah_' + giftRecipient + '.pdf', // Sertakan nama penerima dalam nama file
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
-
-            // Gunakan html2pdf untuk mengunduh sebagai PDF
-            html2pdf().from(giftDetails).set(options).save();
-        }
-
         // JavaScript untuk membuat efek love/bunga berjatuhan
         const fallingElementsContainer = document.querySelector('.falling-elements-container');
         const numberOfElements = 20; // Jumlah elemen yang berjatuhan
@@ -423,7 +382,9 @@
         }
 
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3FkeK2CzZhtHZba0vKROHR6mHmCZPpFQHfUcFunKDUvHB5XeoYYAfEW6S5oq3YRrmlGoeDNnNtJiQeUfQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3FkeK2CzZhtHZba0vKROHR6mHmCZPpFQHfUcFunKDUvHB5XeoYYAfEW6S5oq3YRrmlGoeDNnNtJiQeUfQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
 </body>
 
