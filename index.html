@@ -5,326 +5,237 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lihat Hadiah</title>
-    <!-- Favicon and Icons -->
-    <link rel="icon" href="../hadia.png" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="../hadia.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../hadia.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../hadia.png">
-    <!-- Link to manifest if needed -->
-    <!-- <link rel="manifest" href="../webmanifest"> -->
-    <!-- Fonts and Icons -->
+    <link rel="icon" href="hadia.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Open Graph and Twitter Card Meta Tags -->
-    <meta property="og:title" content="Hadiah Spesial Untukmu!">
-    <meta property="og:description" content="Buka dan lihat hadiah spesial yang telah disiapkan.">
-    <meta property="og:image" content="../hadia.png"> <!-- Use a consistent, accessible image URL -->
-    <meta property="og:url" content="" id="og-url"> <!-- Will be set by JS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="hadia.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="hadia.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="hadia.png">
+    <link rel="manifest" href="webmanifest">
+    <meta property="og:title" content="Menu Pilihan">
+    <meta property="og:description" content="All in One">
+    <meta property="og:image" content="hadia.png">
+    <meta property="og:url" content="https://edycindy.github.io/Menu/gift/create/">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Hadiah Spesial Untukmu!">
-    <meta name="twitter:description" content="Buka dan lihat hadiah spesial yang telah disiapkan.">
-    <meta name="twitter:image" content="../hadia.png"> <!-- Use a consistent, accessible image URL -->
-    <meta name="twitter:url" content="" id="twitter-url"> <!-- Will be set by JS -->
-
+    <meta name="twitter:title" content="Menu Pilihan">
+    <meta name="twitter:description" content="All in One">
+    <meta name="twitter:image" content="hadia.png">
+    <meta name="twitter:url" content="https://edycindy.github.io/Menu/gift/create/">
     <style>
-        :root {
-            --primary-gradient: linear-gradient(135deg, #6a11cb, #2575fc);
-            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            --text-primary: #333;
-            --text-secondary: #555;
-            --accent-color: #ff4081; /* Example accent color */
-        }
-
         body {
             font-family: 'Poppins', sans-serif;
-            background: #f0f2f5; /* Softer background */
-            color: var(--text-primary);
+            background: #f7f8fc;
+            color: #333;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Align top for long cards */
+            align-items: center;
             min-height: 100vh;
             margin: 0;
             padding: 20px;
-            box-sizing: border-box;
+            text-align: center;
         }
 
         .gift-card {
-            background-image: url(../kertas.jpg); /* Ensure this path is correct */
-            background-size: cover;
-            background-position: center;
-            border-radius: 15px;
-            box-shadow: var(--card-shadow);
+            background-image: url(kertas.jpg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             width: 100%;
-            max-width: 650px; /* Slightly narrower */
+            max-width: 700px;
             overflow: hidden;
             position: relative;
-            z-index: 1;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 1; /* Turunkan z-index */
         }
 
         .gift-header {
-            background: var(--primary-gradient);
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
             color: #fff;
-            padding: 35px 30px; /* Adjusted padding */
+            padding: 40px;
             text-align: center;
             position: relative;
         }
 
         .gift-header h1 {
-            font-size: 32px;
-            margin: 0 0 15px 0;
-            font-weight: 600;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            font-size: 36px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .gift-image-container {
             position: relative;
-            width: 160px; /* Slightly smaller */
-            height: 160px;
+            overflow: hidden;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             margin: 0 auto;
-            border: 5px solid #fff;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            background-color: #eee; /* Placeholder background */
-            overflow: hidden; /* Ensure image stays within bounds */
+            border: 6px solid #fff;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
 
         .gift-image {
-            display: block; /* Remove extra space below image */
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: transform 0.3s ease;
         }
 
         .gift-image:hover {
-            transform: scale(1.08);
+            transform: scale(1.1);
         }
-        /* Hide container if no image */
-        .gift-image-container.no-image {
-            display: none;
-        }
-
 
         .gift-body {
-            padding: 25px 30px; /* Adjusted padding */
-            text-align: center; /* Center body content */
+            padding: 30px;
         }
 
-        .recipient-greeting {
-            color: var(--text-secondary); /* Subtler color */
-            font-size: 18px; /* Smaller size */
-            margin-bottom: 5px;
-            font-weight: 300; /* Lighter weight */
-        }
-
-        #gift-recipient {
-            color: #6a11cb; /* Match header color */
-            font-size: 28px; /* Larger recipient name */
-            font-weight: 600;
-            display: block; /* Ensure it takes full width */
-            margin-bottom: 20px; /* Space below name */
-            word-break: break-word;
+        p {
+            color: hsl(244, 96%, 49%);
+            font-size: 25px;
+            text-align: center;
+            text-shadow: #333;
+            font-weight: bold;
         }
 
         .gift-message {
-            font-size: 18px; /* Slightly smaller message */
+            font-size: 19px;
             line-height: 1.7;
             margin-bottom: 25px;
-            color: var(--text-secondary); /* Consistent secondary text color */
-            font-weight: 400; /* Regular weight */
-            white-space: pre-wrap; /* Preserve line breaks from textarea */
+            color: hsl(300, 89%, 33%);
+            font-weight: bold;
+            text-shadow: #333;
             text-align: center;
         }
-        /* Style for when there's no message */
-        .gift-message.no-message {
-             font-style: italic;
-             color: #999;
-        }
 
-        .music-section {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px dashed #ddd; /* Separator */
-        }
-
-        .gift-music-label {
+        .gift-music {
             font-size: 15px;
-            color: var(--text-secondary);
-            margin-bottom: 10px;
-            display: block;
+            color: #777;
+            margin-bottom: 15px;
         }
 
-        .gift-music-label i {
-            margin-right: 8px;
-            color: #6a11cb;
-        }
-
-        #gift-audio {
-            width: 100%;
-            max-width: 400px; /* Limit audio player width */
-            margin-top: 5px;
-            border-radius: 50px; /* Rounded controls */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        /* Hide audio section if no music */
-        .music-section.no-music {
-            display: none;
+        .gift-music i {
+            margin-right: 5px;
+            text-align: center;
         }
 
         .share-button-container {
-            padding: 25px 30px;
-            background-color: rgba(255, 255, 255, 0.5); /* Slight background tint */
-            border-top: 1px solid #eee;
+            text-align: center;
+            padding: 20px;
         }
 
         .share-button {
-            background: #2ecc71; /* Green share button */
+            background-color: #4CAF50;
             border: none;
             color: white;
-            padding: 12px 28px;
+            padding: 12px 24px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
-            font-weight: 600;
             border-radius: 50px;
-            box-shadow: 0 4px 10px rgba(46, 204, 113, 0.4);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease;
         }
 
         .share-button:hover {
-            background-color: #27ae60; /* Darker green */
-            box-shadow: 0 6px 15px rgba(46, 204, 113, 0.5);
-            transform: translateY(-2px);
+            background-color: #367c39;
         }
 
         .share-button i {
-            margin-right: 10px;
+            margin-right: 8px;
         }
 
         .top-right-label {
             position: absolute;
             top: 15px;
-            right: -5px; /* Position slightly off card */
-            background-color: var(--accent-color); /* Use accent color */
+            right: 15px;
+            background-color: #f00;
             color: white;
-            padding: 8px 15px;
-            border-radius: 5px 0 0 5px; /* Rounded on one side */
-            font-size: 14px;
-            font-weight: 600;
+            padding: 7px 12px;
+            border-radius: 7px;
+            font-size: 16px;
             z-index: 10;
-            box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .top-right-label i {
             margin-right: 7px;
         }
 
-        /* Falling Elements */
+        /* Style untuk elemen yang berjatuhan */
         .falling-elements-container {
-            position: fixed; /* Fixed position to cover viewport */
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 2;
-            overflow: hidden; /* Prevent scrollbars */
+            z-index: 2; /* Naikkan z-index */
         }
 
         .falling-element {
             position: absolute;
-            top: -50px; /* Start above screen */
-            font-size: 20px; /* Base size */
-            user-select: none; /* Prevent selection */
+            top: -100px;
+            white-space: nowrap;
             z-index: 1;
             pointer-events: none;
-            animation: falling 10s linear infinite; /* Slower fall */
-            opacity: 0; /* Start invisible */
+            animation: falling linear infinite;
         }
 
         @keyframes falling {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(105vh) rotate(720deg); /* Add rotation */
-                opacity: 0;
+            to {
+                transform: translateY(110vh);
             }
         }
 
-        /* Media Queries */
-        @media (max-width: 700px) {
+        @media (max-width: 600px) {
             .gift-card {
-                max-width: 95%;
-                margin-top: 15px;
-                margin-bottom: 15px;
+                width: 98%;
             }
-             .gift-header { padding: 30px 20px; }
-             .gift-header h1 { font-size: 28px; }
-             .gift-image-container { width: 140px; height: 140px; border-width: 4px;}
-             .gift-body { padding: 20px 25px; }
-             #gift-recipient { font-size: 24px; }
-             .gift-message { font-size: 16px; }
-             .music-section { margin-top: 20px; padding-top: 15px;}
-             .share-button-container { padding: 20px 25px; }
-             .share-button { padding: 10px 22px; font-size: 15px; }
-             .top-right-label { font-size: 13px; padding: 6px 12px;}
+
+            .gift-header {
+                padding: 30px;
+            }
+
+            .gift-header h1 {
+                font-size: 28px;
+            }
+
+            .gift-image-container {
+                width: 150px;
+                height: 150px;
+            }
+
+            .gift-message {
+                font-size: 17px;
+            }
         }
-
-         @media (max-width: 480px) {
-             body { padding: 10px; }
-             .gift-card { border-radius: 10px; }
-             .gift-header h1 { font-size: 24px; }
-             .gift-image-container { width: 120px; height: 120px;}
-             #gift-recipient { font-size: 22px; }
-             .gift-message { font-size: 15px; }
-             .falling-element { font-size: 16px; } /* Smaller falling elements */
-         }
-
     </style>
 </head>
 
 <body>
-    <!-- Container for falling elements -->
-    <div class="falling-elements-container" id="falling-container"></div>
+    <div class="falling-elements-container"></div>
 
-    <!-- Main Gift Card -->
     <div class="gift-card" id="gift-details">
-        <!-- Error message placeholder -->
-        <div id="error-message" style="padding: 30px; color: red; text-align: center; display: none;"></div>
-
         <div class="top-right-label">
             <i class="fas fa-gift"></i> HADIAH
         </div>
         <div class="gift-header">
             <h1>Hadiah Spesial!</h1>
-            <div class="gift-image-container" id="gift-image-container">
+            <div class="gift-image-container">
                 <img src="" alt="Gambar Hadiah" class="gift-image" id="gift-image">
             </div>
         </div>
         <div class="gift-body">
-            <span class="recipient-greeting">Untuk:</span>
-            <span id="gift-recipient"></span>
+            <p>Untuk <span id="gift-recipient"></span></p>
             <p class="gift-message" id="gift-message"></p>
-
-            <div class="music-section" id="music-section">
-                 <span class="gift-music-label"><i class="fas fa-music"></i> Musik Pengiring:</span>
-                 <audio controls id="gift-audio"></audio>
-            </div>
+            <p class="gift-music"><i class="fas fa-music"></i>Musik: <span id="gift-music"></span></p>
+            <audio controls id="gift-audio"></audio>
         </div>
 
         <div class="share-button-container">
             <button class="share-button" onclick="shareGift()">
-                <i class="fas fa-share-alt"></i> Bagikan Lagi
+                <i class="fas fa-share-alt"></i> Bagikan Hadiah
             </button>
         </div>
     </div>
@@ -333,143 +244,79 @@
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const giftDataParam = urlParams.get('giftData');
-            const giftDetailsCard = document.getElementById('gift-details');
-            const errorMessageDiv = document.getElementById('error-message');
-
-            // Set OG/Twitter URL dynamically
-            const currentUrl = window.location.href;
-            document.getElementById('og-url').setAttribute('content', currentUrl);
-            document.getElementById('twitter-url').setAttribute('content', currentUrl);
-
 
             if (giftDataParam) {
                 try {
-                    // Decode and parse the JSON data from the URL
-                    // Using shorter keys (rn, m, iu, mu) as defined in create page
                     const gift = JSON.parse(decodeURIComponent(giftDataParam));
 
-                    // Populate Recipient Name
-                    const recipientEl = document.getElementById('gift-recipient');
-                    recipientEl.innerText = gift.rn || "Seseorang yang Spesial"; // Use fallback
+                    document.getElementById('gift-recipient').innerText = gift.recipientName;
+                    document.getElementById('gift-message').innerText = gift.message || "Tidak ada pesan.";
 
-                    // Populate Message
-                    const messageEl = document.getElementById('gift-message');
-                    if (gift.m) {
-                        messageEl.innerText = gift.m;
-                        messageEl.classList.remove('no-message');
-                    } else {
-                        messageEl.innerText = "(Tidak ada pesan tambahan)";
-                        messageEl.classList.add('no-message');
-                    }
-
-                    // Populate Image (using Data URL directly)
-                    const imageContainer = document.getElementById('gift-image-container');
                     const imageElement = document.getElementById('gift-image');
-                    if (gift.iu && gift.iu.startsWith('data:image')) {
-                        imageElement.src = gift.iu;
-                        imageContainer.classList.remove('no-image');
+                    if (gift.imageUrl) {
+                        imageElement.src = gift.imageUrl;
                     } else {
-                        imageContainer.classList.add('no-image'); // Hide container if no image data
+                        imageElement.style.display = 'none';
                     }
 
-                    // Populate Music (using Data URL directly)
-                    const musicSection = document.getElementById('music-section');
+                    const musicElement = document.getElementById('gift-music');
                     const audioElement = document.getElementById('gift-audio');
-                    if (gift.mu && gift.mu.startsWith('data:audio')) {
-                        audioElement.src = gift.mu;
-                        audioElement.load(); // Preload audio metadata
-                        musicSection.classList.remove('no-music');
+
+                    if (gift.musicUrl) {
+                        musicElement.innerText = "Musik tersedia";
+                        audioElement.src = gift.musicUrl;
+                        audioElement.controls = true;
                     } else {
-                        musicSection.classList.add('no-music'); // Hide music section
+                        musicElement.innerText = "Tidak ada musik dipilih";
+                        audioElement.style.display = 'none';
                     }
-
-                     // Start falling elements animation after data is loaded
-                     setupFallingElements();
-
                 } catch (error) {
                     console.error("Error parsing gift data:", error);
-                    showError("Gagal memuat data hadiah. Tautan mungkin rusak atau tidak lengkap.");
+                    document.getElementById('gift-details').innerHTML = '<p>Data hadiah tidak valid.</p>';
                 }
             } else {
-                showError("Tidak ada data hadiah ditemukan di tautan ini.");
+                document.getElementById('gift-details').innerHTML = '<p>Tidak ada data hadiah ditemukan.</p>';
             }
-        });
 
-        function showError(message) {
-             const giftDetailsCard = document.getElementById('gift-details');
-             const errorMessageDiv = document.getElementById('error-message');
-             // Hide the main card content and show error message
-             Array.from(giftDetailsCard.children).forEach(child => {
-                 if(child.id !== 'error-message') child.style.display = 'none';
-             });
-             errorMessageDiv.innerText = message;
-             errorMessageDiv.style.display = 'block';
-        }
+            // JavaScript untuk membuat efek love/bunga berjatuhan
+            const fallingElementsContainer = document.querySelector('.falling-elements-container');
+            const numberOfElements = 20;
+            const elements = ['❤️', '🌸', '🌷', '🌹', '🌼', '💖'];
 
-        // Function to set up falling elements
-        function setupFallingElements() {
-            const fallingContainer = document.getElementById('falling-container');
-            if (!fallingContainer) return; // Exit if container not found
-
-            fallingContainer.innerHTML = ''; // Clear previous elements if any
-            const elements = ['❤️', '🌸', '🌷', '✨', '💖', '🎉', '🎁', '⭐'];
-            const numberOfElements = 30; // More elements
-
-            for (let i = 0; i < numberOfElements; i++) {
+            function createFallingElement() {
                 const element = document.createElement('span');
                 element.classList.add('falling-element');
                 element.innerText = elements[Math.floor(Math.random() * elements.length)];
-
-                // Randomize properties
-                const size = Math.random() * 15 + 10; // Size between 10px and 25px
-                const horizontalPosition = Math.random() * 100; // Position across width
-                const fallDuration = Math.random() * 8 + 7; // Duration between 7s and 15s
-                const animationDelay = Math.random() * 10; // Delay start up to 10s
-                const initialRotation = Math.random() * 360; // Random start rotation
-
+                const size = Math.random() * 20 + 15;
                 element.style.fontSize = `${size}px`;
-                element.style.left = `${horizontalPosition}vw`;
-                element.style.animationDuration = `${fallDuration}s`;
-                element.style.animationDelay = `${animationDelay}s`;
-                element.style.transform = `rotate(${initialRotation}deg)`; // Apply initial rotation
-
-                fallingContainer.appendChild(element);
-
-                // Remove element after animation finishes to prevent buildup (optional)
-                 element.addEventListener('animationend', () => {
-                     // element.remove(); // Can cause performance issues if too many are added/removed rapidly
-                 });
+                element.style.left = `${Math.random() * 100}vw`;
+                element.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                fallingElementsContainer.appendChild(element);
             }
-        }
 
-        // Function to share the gift link
+            for (let i = 0; i < numberOfElements; i++) {
+                createFallingElement();
+            }
+        });
+
         function shareGift() {
-            const recipientName = document.getElementById('gift-recipient').innerText || "Kamu";
-            const shareData = {
-                title: `Hadiah Spesial untuk ${recipientName}!`,
-                text: `Hai ${recipientName}, lihat hadiah spesial yang telah disiapkan untukmu! 🎁`,
-                url: window.location.href, // Share the current page URL
-            };
-
             if (navigator.share) {
-                navigator.share(shareData)
-                    .then(() => console.log('Hadiah berhasil dibagikan'))
-                    .catch((error) => console.log('Gagal berbagi:', error));
+                navigator.share({
+                    title: 'Hadiah Spesial untukmu!',
+                    text: 'Lihat hadiah yang telah disiapkan untukmu.',
+                    url: window.location.href,
+                })
+                    .then(() => console.log('Berhasil dibagikan'))
+                    .catch((error) => console.log('Error berbagi:', error));
             } else {
-                // Fallback for browsers that don't support navigator.share
-                navigator.clipboard.writeText(`Lihat hadiah spesial ini: ${window.location.href}`).then(() => {
-                    alert('Tautan hadiah telah disalin ke clipboard! Bagikan secara manual.');
-                }).catch(err => {
-                    alert('Fitur berbagi tidak didukung & gagal menyalin tautan. Salin tautan dari bilah alamat browser.');
-                    console.error('Fallback share error:', err);
-                });
+                alert('Fitur berbagi tidak didukung di browser ini.');
             }
         }
     </script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
         integrity="sha512-GsLlZN/3FkeK2CzZhtHZba0vKROHR6mHmCZPpFQHfUcFunKDUvHB5XeoYYAfEW6S5oq3YRrmlGoeDNnNtJiQeUfQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
-
 </body>
+
 </html>
